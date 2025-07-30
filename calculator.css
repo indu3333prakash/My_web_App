@@ -1,0 +1,316 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.calculator-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.calculator {
+    max-width: 500px;
+    width: 100%;
+}
+
+.display-section {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: white;
+    text-align: right;
+}
+
+.history {
+    font-size: 14px;
+    color: #888;
+    min-height: 20px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.display {
+    font-size: 2.5em;
+    font-weight: 300;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.memory-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.memory-btn {
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.memory-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.memory-btn:active {
+    transform: translateY(0);
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn.number {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.btn.number:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.btn.operator {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+}
+
+.btn.operator:hover {
+    background: linear-gradient(135deg, #ff5252, #e53935);
+}
+
+.btn.function {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    color: white;
+    font-size: 14px;
+}
+
+.btn.function:hover {
+    background: linear-gradient(135deg, #26d0ce, #2a9d8f);
+}
+
+.btn.clear {
+    background: linear-gradient(135deg, #ffa726, #ff9800);
+    color: white;
+}
+
+.btn.clear:hover {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+}
+
+.btn.equals {
+    background: linear-gradient(135deg, #66bb6a, #43a047);
+    color: white;
+    grid-column: span 1;
+}
+
+.btn.equals:hover {
+    background: linear-gradient(135deg, #4caf50, #388e3c);
+}
+
+.btn.zero {
+    grid-column: span 1;
+}
+
+.history-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.history-section h3 {
+    color: white;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.history-list {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 1.6;
+    max-height: 120px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.history-item {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.history-item:hover {
+    color: white;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+/* Custom scrollbar */
+.history-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .calculator-container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .button-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+    
+    .btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .display {
+        font-size: 2em;
+    }
+    
+    .memory-section {
+        gap: 5px;
+    }
+    
+    .memory-btn {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .button-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .btn {
+        padding: 10px;
+        font-size: 12px;
+    }
+    
+    .display {
+        font-size: 1.8em;
+    }
+}
+
+/* Animation for calculation */
+@keyframes calculate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.calculating {
+    animation: calculate 0.3s ease-in-out;
+}
+
+/* Error state */
+.error {
+    color: #ff5252 !important;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Memory indicator */
+.memory-active {
+    background: linear-gradient(135deg, #ff9800, #f57c00) !important;
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+}

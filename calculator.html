@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="display-section">
+                <div class="history" id="history"></div>
+                <div class="display" id="display">0</div>
+            </div>
+            
+            <div class="memory-section">
+                <button class="memory-btn" onclick="memoryStore()">MS</button>
+                <button class="memory-btn" onclick="memoryRecall()">MR</button>
+                <button class="memory-btn" onclick="memoryClear()">MC</button>
+                <button class="memory-btn" onclick="memoryAdd()">M+</button>
+                <button class="memory-btn" onclick="memorySubtract()">M-</button>
+            </div>
+
+            <div class="button-grid">
+                <!-- Scientific Functions Row 1 -->
+                <button class="btn function" onclick="scientificFunction('sin')">sin</button>
+                <button class="btn function" onclick="scientificFunction('cos')">cos</button>
+                <button class="btn function" onclick="scientificFunction('tan')">tan</button>
+                <button class="btn function" onclick="scientificFunction('log')">log</button>
+                <button class="btn function" onclick="scientificFunction('ln')">ln</button>
+
+                <!-- Scientific Functions Row 2 -->
+                <button class="btn function" onclick="scientificFunction('asin')">asin</button>
+                <button class="btn function" onclick="scientificFunction('acos')">acos</button>
+                <button class="btn function" onclick="scientificFunction('atan')">atan</button>
+                <button class="btn function" onclick="scientificFunction('sqrt')">√</button>
+                <button class="btn function" onclick="scientificFunction('cbrt')">∛</button>
+
+                <!-- Scientific Functions Row 3 -->
+                <button class="btn function" onclick="scientificFunction('pow')">x^y</button>
+                <button class="btn function" onclick="scientificFunction('exp')">e^x</button>
+                <button class="btn function" onclick="scientificFunction('factorial')">x!</button>
+                <button class="btn function" onclick="insertConstant('pi')">π</button>
+                <button class="btn function" onclick="insertConstant('e')">e</button>
+
+                <!-- Basic Operations Row 1 -->
+                <button class="btn clear" onclick="clearAll()">C</button>
+                <button class="btn clear" onclick="clearEntry()">CE</button>
+                <button class="btn operator" onclick="backspace()">⌫</button>
+                <button class="btn operator" onclick="appendOperator('/')">/</button>
+                <button class="btn function" onclick="scientificFunction('percent')">%</button>
+
+                <!-- Basic Operations Row 2 -->
+                <button class="btn number" onclick="appendNumber('7')">7</button>
+                <button class="btn number" onclick="appendNumber('8')">8</button>
+                <button class="btn number" onclick="appendNumber('9')">9</button>
+                <button class="btn operator" onclick="appendOperator('*')">×</button>
+                <button class="btn function" onclick="appendOperator('^')">x²</button>
+
+                <!-- Basic Operations Row 3 -->
+                <button class="btn number" onclick="appendNumber('4')">4</button>
+                <button class="btn number" onclick="appendNumber('5')">5</button>
+                <button class="btn number" onclick="appendNumber('6')">6</button>
+                <button class="btn operator" onclick="appendOperator('-')">-</button>
+                <button class="btn function" onclick="scientificFunction('reciprocal')">1/x</button>
+
+                <!-- Basic Operations Row 4 -->
+                <button class="btn number" onclick="appendNumber('1')">1</button>
+                <button class="btn number" onclick="appendNumber('2')">2</button>
+                <button class="btn number" onclick="appendNumber('3')">3</button>
+                <button class="btn operator" onclick="appendOperator('+')">+</button>
+                <button class="btn function" onclick="toggleSign()">±</button>
+
+                <!-- Basic Operations Row 5 -->
+                <button class="btn number zero" onclick="appendNumber('0')">0</button>
+                <button class="btn number" onclick="appendNumber('.')">.</button>
+                <button class="btn equals" onclick="calculate()">=</button>
+                <button class="btn function" onclick="appendOperator('(')">(</button>
+                <button class="btn function" onclick="appendOperator(')')">)</button>
+            </div>
+
+            <div class="history-section">
+                <h3>History</h3>
+                <div class="history-list" id="historyList"></div>
+                <button class="btn clear" onclick="clearHistory()">Clear History</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
